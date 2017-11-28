@@ -1,6 +1,7 @@
 package com.phu.freefall.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,7 +22,13 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void update(float delta) {
-
+        if(Gdx.input.isKeyPressed(Keys.LEFT)) {
+            ball.move(ball.DIRECTION_LEFT);
+        }
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+            ball.move(ball.DIRECTION_RIGHT);
+        }
+        ball.update(delta);
     }
 
     @Override
