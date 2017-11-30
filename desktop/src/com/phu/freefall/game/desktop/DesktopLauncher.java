@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 1024;
 		config.height = 720;
+		config.foregroundFPS = 120;
 		new LwjglApplication(new FreeFall(), config);
 	}
 }

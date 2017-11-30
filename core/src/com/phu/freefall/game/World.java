@@ -6,9 +6,9 @@ public class World {
 
     public World(FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
-        ball = new Ball(100,100);
-    }
+        ball = new Ball(100,100, this);
 
+    }
     public void update(float delta) { ball.update(delta); }
 
     Ball getBall() { return ball; }

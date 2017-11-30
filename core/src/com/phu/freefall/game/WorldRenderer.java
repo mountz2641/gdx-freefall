@@ -20,8 +20,9 @@ public class WorldRenderer {
     public void render(float delta) {
         Vector2 ballPos = world.getBall().getPosition();
         batch.begin();
-        batch.draw(ballImg, ballPos.x, ballPos.y);
+        batch.draw(ballImg, ballPos.x - (ballImg.getWidth()/2), ballPos.y - (ballImg.getHeight()/2));
         batch.end();
+        System.out.println("Delta: " + delta);
     }
 
 }

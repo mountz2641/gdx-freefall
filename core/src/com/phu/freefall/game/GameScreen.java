@@ -14,6 +14,7 @@ public class GameScreen extends ScreenAdapter {
     World world;
     WorldRenderer worldRenderer;
 
+
     public GameScreen (FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
         this.world = new World(freeFall);
@@ -23,10 +24,10 @@ public class GameScreen extends ScreenAdapter {
 
     private void update(float delta) {
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            ball.setSpeedX(ball.DIRECTION_LEFT);
+            ball.setVelocityX(ball.DIRECTION_LEFT, ball.getSpeed());
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            ball.setSpeedX(ball.DIRECTION_RIGHT);
+            ball.setVelocityX(ball.DIRECTION_RIGHT, ball.getSpeed());
         }
         ball.update(delta);
     }
@@ -34,7 +35,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         update(delta);
-        Gdx.gl.glClearColor(100/255f, 200/255f, 100/255f, 0);
+        Gdx.gl.glClearColor(100/255f, 100/255f, 100/255f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         worldRenderer.render(delta);
     }

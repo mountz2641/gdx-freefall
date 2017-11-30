@@ -1,21 +1,37 @@
 package com.phu.freefall.game;
 
 public class MovableObject extends GameObject {
-    protected int vx;
-    protected int vy;
+    protected int velocX = 0;
+    protected int velocY = 0;
+    protected int accelY = 0;
 
     public final int DIRECTION_RIGHT = 0;
     public final int DIRECTION_LEFT = 1;
 
 
-    public void setSpeedX(int pDirection) {
+    public void setVelocityX(int pDirection, int pSpeed) {
         switch(pDirection) {
             case DIRECTION_RIGHT:
-                vx = 7;
+                velocX = 7;
                 break;
             case DIRECTION_LEFT:
-                vx = -7;
+                velocX = -7;
                 break;
         }
+    }
+    public void setVelocityY(int pDirection, int pSpeed) {
+        switch(pDirection) {
+            case DIRECTION_RIGHT:
+                velocY = pSpeed;
+                break;
+            case DIRECTION_LEFT:
+                velocY = pSpeed;
+                break;
+        }
+        velocY += accelY;
+    }
+
+    public void setAccelY (int pAccel) {
+        this.accelY = pAccel;
     }
 }
