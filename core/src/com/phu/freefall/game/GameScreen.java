@@ -10,15 +10,15 @@ import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter {
     private final Ball ball;
-    private Texture ballImg;
-    private FreeFall freefallGame;
-    private SpriteBatch batch;
+    private FreeFall freeFall;
+    World world;
+    WorldRenderer worldRenderer;
 
-    public GameScreen (FreeFall freeFall) {
-        this.freefallGame = freeFall;
-        batch = freefallGame.batch;
-        ball = new Ball(100,100);
-        ballImg = new Texture("ball.png");
+    public GameScreen (FreeFall pFreeFall) {
+        this.freeFall = pFreeFall;
+        this.world = new World(freeFall);
+        this.ball = world.getBall();
+        this.worldRenderer = new WorldRenderer(freeFall, world);
     }
 
     private void update(float delta) {
@@ -36,10 +36,6 @@ public class GameScreen extends ScreenAdapter {
         update(delta);
         Gdx.gl.glClearColor(100/255f, 200/255f, 100/255f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        Vector2 ballPos = ball.getPosition();
-        batch.draw(ballImg, ballPos.x, ballPos.y);
-        batch.end();
-        System.out.println("Delta: " + delta);
+        worldRenderer.render(delta);
     }
 }
