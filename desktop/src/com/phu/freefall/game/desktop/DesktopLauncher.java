@@ -7,9 +7,11 @@ import com.phu.freefall.game.FreeFall;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 1024;
-		config.height = 720;
+		config.width = FreeFall.WIDTH;
+		config.height = FreeFall.HEIGHT;
 		config.foregroundFPS = 120;
+		config.x = 690;
+		config.y = 30;
 		new LwjglApplication(new FreeFall(), config);
 	}
 }
