@@ -19,15 +19,7 @@ public class MovableObject extends GameObject {
                 break;
         }
     }
-    public void setVelocityY(int pDirection, int pSpeed) {
-        switch(pDirection) {
-            case DIRECTION_RIGHT:
-                velocY = pSpeed;
-                break;
-            case DIRECTION_LEFT:
-                velocY = pSpeed;
-                break;
-        }
+    public void setVelocityY() {
         velocY += accelY;
     }
 

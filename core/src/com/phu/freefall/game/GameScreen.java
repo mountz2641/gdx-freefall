@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends ScreenAdapter {
-    private final Ball ball;
     private FreeFall freeFall;
     World world;
     WorldRenderer worldRenderer;
@@ -18,18 +17,18 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen (FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
         this.world = new World(freeFall);
-        this.ball = world.getBall();
-        this.worldRenderer = new WorldRenderer(freeFall, world);
+        this.worldRenderer = new WorldRenderer(freeFall,world);
     }
 
     private void update(float delta) {
+        Ball ball = world.getBall();
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             ball.setVelocityX(ball.DIRECTION_LEFT, ball.getSpeed());
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
             ball.setVelocityX(ball.DIRECTION_RIGHT, ball.getSpeed());
         }
-        ball.update(delta);
+        world.update(delta);
     }
 
     @Override
