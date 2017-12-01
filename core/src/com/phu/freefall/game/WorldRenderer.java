@@ -13,14 +13,14 @@ public class WorldRenderer {
     private SpriteBatch batch;
     private Texture ballImage;
     private Texture floorImage;
-    private Texture backgroundImage;
+    //private Texture backgroundImage;
 
     public WorldRenderer(FreeFall pFreeFall, World pWorld) {
         this.freeFall = pFreeFall;
         this.world = pWorld;
         this.ballImage = new Texture("ball.png");
         this.batch = freeFall.batch;
-        this.backgroundImage = new Texture("stoneWall.jpg");
+        //this.backgroundImage = new Texture("stoneWall.jpg");
         this.floorImage = new Texture("floor.png");
     }
 
@@ -28,7 +28,7 @@ public class WorldRenderer {
         Vector2 ballPos = world.getBall().getPosition();
         Vector2  floorPos = world.getFloor().getPosition();
         batch.begin();
-        batch.draw(backgroundImage,0,0);
+        //batch.draw(backgroundImage,0,0);
         batch.draw(ballImage, ballPos.x - (ballImage.getWidth()/2)
                             , ballPos.y - (ballImage.getHeight()/2));
         batch.draw(floorImage, floorPos.x - (floorImage.getWidth()/2)
