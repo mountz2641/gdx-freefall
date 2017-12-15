@@ -26,13 +26,14 @@ public class WorldRenderer {
 
     public void render(float delta) {
         Vector2 ballPos = world.getBall().getPosition();
-        Vector2  floorPos = world.getFloor().getPosition();
         batch.begin();
         //batch.draw(backgroundImage,0,0);
         batch.draw(ballImage, ballPos.x - (ballImage.getWidth()/2)
                             , ballPos.y - (ballImage.getHeight()/2));
-        batch.draw(floorImage, floorPos.x - (floorImage.getWidth()/2)
-                , floorPos.y - (floorImage.getHeight()/2));
+        for (Floor floor: world.getPlatform()) {
+            batch.draw(floorImage,floor.getPosition().x - (floorImage.getWidth()/2),
+                                     floor.getPosition().y - (floorImage.getWidth())/2);
+        }
         batch.end();
         //System.out.println("Delta: " + delta);
     }

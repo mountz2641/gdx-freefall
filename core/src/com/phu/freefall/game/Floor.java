@@ -8,8 +8,8 @@ public class Floor extends GameObject{
     public Floor (int x, int y,World pWorld) {
         this.position = new Vector2(x, y);
         this.world = pWorld;
-        width = 64;
-        height = 64;
+        width = 72;
+        height = 72;
 
     }
 }

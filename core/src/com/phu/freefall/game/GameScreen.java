@@ -23,10 +23,10 @@ public class GameScreen extends ScreenAdapter {
     private void update(float delta) {
         Ball ball = world.getBall();
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-            ball.setVelocityX(ball.DIRECTION_LEFT, ball.getSpeed());
+            ball.setVelocityX(-ball.getSpeed());
         }
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            ball.setVelocityX(ball.DIRECTION_RIGHT, ball.getSpeed());
+            ball.setVelocityX(ball.getSpeed());
         }
         world.update(delta);
     }

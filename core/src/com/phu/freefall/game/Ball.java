@@ -2,6 +2,7 @@ package com.phu.freefall.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.math.Vector2;
+import sun.rmi.server.Activation$ActivationSystemImpl_Stub;
 
 public class Ball extends MovableObject {
     private boolean isInAir = true;
@@ -11,9 +12,11 @@ public class Ball extends MovableObject {
 
     public Ball(int x, int y, World pWorld) {
         position = new Vector2(x, y);
+        velocity = new Vector2(0,0);
+        acceleration = new Vector2(0,0);
         width = 64;
         height = 64;
-        speed = 7;
+        speed = 420;
         this.world = pWorld;
     }
 
@@ -21,25 +24,24 @@ public class Ball extends MovableObject {
 
     public void update (float delta) {
         if(isInAir) {
-            System.out.println("AIRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+            //System.out.println("AIRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
             timecount += delta;
-            System.out.println("TIME: " + timecount);
-            if(timecount > 0.1) {
-                System.out.println("FASTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-                accelY = -1;
-                velocY += accelY;
-                timecount -= 0.1;
+            //System.out.println("TIME: " + timecount);
+            if(timecount > 0.01) {
+                //System.out.println("FASTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+                applyGravity();
+                timecount -= 0.01;
             }
         }
         else {
-            System.out.println("TOUCHHHHHHHHHHHHHHHHHHHHHH");
+            //System.out.println("TOUCHHHHHHHHHHHHHHHHHHHHHH");
             timecount = 0;
-            velocY = 0;
-            accelY = 0;
+            setVelocityY(0);
+            setAccelerationY(0);
         }
-        position.x += velocX * 60 * delta;
-        velocX = 0;
-        position.y += velocY * 60 * delta;
+        position.x += velocity.x * delta;
+        setVelocityX(0);
+        position.y += velocity.y * delta;
     }
 
     public void setInAir(boolean inAir) {

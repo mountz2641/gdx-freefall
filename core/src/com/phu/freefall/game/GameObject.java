@@ -14,4 +14,12 @@ public class GameObject {
     public void setPosition(Vector2 pPosition) {
         this.position = pPosition;
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 }

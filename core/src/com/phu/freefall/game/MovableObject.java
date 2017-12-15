@@ -1,29 +1,32 @@
 package com.phu.freefall.game;
 
+import com.badlogic.gdx.math.Vector2;
+
 public class MovableObject extends GameObject {
-    protected int velocX = 0;
-    protected int velocY = 0;
-    protected int accelY = 0;
+    protected Vector2 velocity;
+    protected Vector2 acceleration;
 
     public final int DIRECTION_RIGHT = 0;
     public final int DIRECTION_LEFT = 1;
 
 
-    public void setVelocityX(int pDirection, int pSpeed) {
-        switch(pDirection) {
-            case DIRECTION_RIGHT:
-                velocX = 7;
-                break;
-            case DIRECTION_LEFT:
-                velocX = -7;
-                break;
-        }
-    }
-    public void setVelocityY() {
-        velocY += accelY;
+    public void setVelocityX(int pSpeed) {
+        velocity.x = pSpeed;
     }
 
-    public void setAccelY (int pAccel) {
-        this.accelY = pAccel;
+    public void setVelocityY(int pSpeed) {
+        velocity.y = pSpeed;
+    }
+
+    public void setAccelerationX(int pAccel) {
+        acceleration.x = pAccel;
+    }
+
+    public void setAccelerationY(int pAccel) {
+        acceleration.y = pAccel;
+    }
+    public void applyGravity() {
+        setAccelerationY(-10);
+        velocity.y += acceleration.y;
     }
 }
