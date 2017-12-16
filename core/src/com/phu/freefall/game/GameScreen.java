@@ -21,6 +21,11 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void update(float delta) {
+        playerControl();
+        world.update(delta);
+    }
+
+    private void playerControl() {
         Ball ball = world.getBall();
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             ball.setVelocityX(-ball.getSpeed());
@@ -28,11 +33,11 @@ public class GameScreen extends ScreenAdapter {
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
             ball.setVelocityX(ball.getSpeed());
         }
-        world.update(delta);
     }
 
     @Override
     public void render(float delta) {
+        System.out.println("DELTA: " + delta);
         update(delta);
         Gdx.gl.glClearColor(100/255f, 100/255f, 100/255f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

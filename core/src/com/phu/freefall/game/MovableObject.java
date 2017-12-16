@@ -25,6 +25,7 @@ public class MovableObject extends GameObject {
     public void setAccelerationY(int pAccel) {
         acceleration.y = pAccel;
     }
+
     public void applyGravity() {
         setAccelerationY(-10);
         velocity.y += acceleration.y;

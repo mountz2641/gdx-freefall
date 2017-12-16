@@ -11,8 +11,10 @@ public class WorldRenderer {
     private World world;
     private FreeFall freeFall;
     private SpriteBatch batch;
+    private MapRenderer mapRenderer;
     private Texture ballImage;
     private Texture floorImage;
+
     //private Texture backgroundImage;
 
     public WorldRenderer(FreeFall pFreeFall, World pWorld) {
@@ -22,18 +24,16 @@ public class WorldRenderer {
         this.batch = freeFall.batch;
         //this.backgroundImage = new Texture("stoneWall.jpg");
         this.floorImage = new Texture("floor.png");
+        this.mapRenderer = new MapRenderer(batch, world.getMap());
     }
 
     public void render(float delta) {
         Vector2 ballPos = world.getBall().getPosition();
+        mapRenderer.render(delta);
         batch.begin();
         //batch.draw(backgroundImage,0,0);
         batch.draw(ballImage, ballPos.x - (ballImage.getWidth()/2)
                             , ballPos.y - (ballImage.getHeight()/2));
-        for (Floor floor: world.getPlatform()) {
-            batch.draw(floorImage,floor.getPosition().x - (floorImage.getWidth()/2),
-                                     floor.getPosition().y - (floorImage.getWidth())/2);
-        }
         batch.end();
         //System.out.println("Delta: " + delta);
     }
