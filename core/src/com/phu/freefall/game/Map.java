@@ -7,30 +7,21 @@ public class Map {
     private Floor refFloor;
     private ArrayList<Floor> platform = new ArrayList<Floor>();
     private String[] pattern = new String[] {
-            "--<#####",
-            "#>--<###",
-            "###>--<#",
-            "#####>--",
-            "--<##>--",
-            "##>--<##",
-            "--^--^--",
-            "#>----<#",
-            ">--<>--<",
+            "--######",
+            "##--####",
+            "####--##",
+            "######--",
+            "--####--",
+            "###--###",
+            "--#--#--",
+            "##----##",
+            "#--##--#",
             "--------"};
     public Map (World pWorld) {
         this.world = pWorld;
         this.refFloor = new Floor(0,0,world);
         for (int i = 0; i < 8; i++) {
             if(pattern[5].charAt(i) == '#') {
-                this.platform.add(new Floor(refFloor.getWidth()/2 + i * refFloor.getWidth(), 0,world));
-            }
-            else if(pattern[5].charAt(i) == '<') {
-                this.platform.add(new Floor(refFloor.getWidth()/2 + i * refFloor.getWidth(), 0,world));
-            }
-            else if(pattern[5].charAt(i) == '>') {
-                this.platform.add(new Floor(refFloor.getWidth()/2 + i * refFloor.getWidth(), 0,world));
-            }
-            else if(pattern[5].charAt(i) == '^') {
                 this.platform.add(new Floor(refFloor.getWidth()/2 + i * refFloor.getWidth(), 0,world));
             }
         }
