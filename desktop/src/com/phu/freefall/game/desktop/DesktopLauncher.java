@@ -12,6 +12,8 @@ public class DesktopLauncher {
 		config.foregroundFPS = 60;
 		config.x = 690;
 		config.y = 10;
+		config.title = "\"Free Fall\" why are you reading this,just play the game!!!";
+
 		new LwjglApplication(new FreeFall(), config);
 	}
 }
