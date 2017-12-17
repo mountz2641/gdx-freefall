@@ -60,7 +60,7 @@ public class GameScreen extends ScreenAdapter {
     public void render(float delta) {
         System.out.println("DELTA: " + delta);
         update(delta);
-        Gdx.gl.glClearColor(100/255f, 100/255f, 100/255f, 0);
+        Gdx.gl.glClearColor(40/255f, 40/255f, 40/255f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         worldRenderer.render(delta);
     }

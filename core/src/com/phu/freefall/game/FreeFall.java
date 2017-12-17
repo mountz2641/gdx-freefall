@@ -9,8 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FreeFall extends Game {
 	SpriteBatch batch;
+
 	public static final int HEIGHT = 1000;
 	public static final int WIDTH = 576;
+
+
 	
 	@Override
 	public void create () {

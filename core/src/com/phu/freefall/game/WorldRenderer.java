@@ -48,6 +48,9 @@ public class WorldRenderer {
                 worldCam.getPosition().y + (worldCam.getViewportHeight() >> 1) - spearRowImage.getHeight());
         batch.draw(ballImage, ballPos.x - (ballImage.getWidth() >> 1)
                             , ballPos.y - (ballImage.getHeight() >> 1));
+        world.gamefont.draw(batch,"Scores: " + world.score,
+                worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1) + 32,
+                worldCam.getPosition().y + (worldCam.getViewportHeight() >> 1) - 64);
         batch.end();
         //System.out.println("Delta: " + delta);
     }
