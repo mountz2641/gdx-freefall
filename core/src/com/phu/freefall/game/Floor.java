@@ -23,7 +23,7 @@ public class Floor extends GameObject{
             return Direction.NONE;
         }
         else if(isXInRange(ball.getPosition().y - ball.getHeight()/2,
-                            this.position.y + this.height/3,
+                            this.position.y + this.height/3.5f,
                             this.position.y + this.height/2)) {
             //Ball is on top of Floor
             return Direction.UP;

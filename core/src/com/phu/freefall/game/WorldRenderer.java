@@ -14,6 +14,9 @@ public class WorldRenderer {
     private MapRenderer mapRenderer;
     private Texture ballImage;
     private Texture floorImage;
+    private Texture spearRowImage;
+    private Texture spearRowRevertImage;
+    private Camera worldCam;
 
     //private Texture backgroundImage;
 
@@ -25,6 +28,13 @@ public class WorldRenderer {
         //this.backgroundImage = new Texture("stoneWall.jpg");
         this.floorImage = new Texture("floor.png");
         this.mapRenderer = new MapRenderer(batch, world.getMap());
+        this.worldCam = world.getWorldCam();
+        this.spearRowImage = new Texture("spear_row.png");
+        this.spearRowRevertImage = new Texture("spear_row_revert.png");
+    }
+
+    public void setBallImage(Texture ballImage) {
+        this.ballImage = ballImage;
     }
 
     public void render(float delta) {
@@ -32,8 +42,12 @@ public class WorldRenderer {
         mapRenderer.render(delta);
         batch.begin();
         //batch.draw(backgroundImage,0,0);
-        batch.draw(ballImage, ballPos.x - (ballImage.getWidth()/2)
-                            , ballPos.y - (ballImage.getHeight()/2));
+        batch.draw(spearRowImage,worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1),
+                worldCam.getPosition().y - (worldCam.getViewportHeight() >> 1));
+        batch.draw(spearRowRevertImage,worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1),
+                worldCam.getPosition().y + (worldCam.getViewportHeight() >> 1) - spearRowImage.getHeight());
+        batch.draw(ballImage, ballPos.x - (ballImage.getWidth() >> 1)
+                            , ballPos.y - (ballImage.getHeight() >> 1));
         batch.end();
         //System.out.println("Delta: " + delta);
     }

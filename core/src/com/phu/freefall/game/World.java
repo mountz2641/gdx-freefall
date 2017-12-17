@@ -1,5 +1,6 @@
 package com.phu.freefall.game;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -13,11 +14,11 @@ public class World {
     private Ball ball;
     private FreeFall freeFall;
     private Map map;
+    private WorldRenderer worldRenderer;
 
     private Camera worldCam;
     private static final int CAM_VIEWPORT_WIDTH = FreeFall.WIDTH;
     private static final int CAM_VIEW_HEIGHT = FreeFall.HEIGHT;
-    private static final float CAM_INIT_SPEED = 2;
 
     public World(FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
@@ -46,10 +47,19 @@ public class World {
         return worldCam;
     }
 
+    public void setWorldRenderer(WorldRenderer worldRenderer) {
+        this.worldRenderer = worldRenderer;
+    }
+
+    public WorldRenderer getWorldRenderer() {
+        return worldRenderer;
+    }
+
     public void update(float delta) {
         ball.update(delta);
         map.update(delta);
         worldCam.update(delta);
     }
+
 
 }

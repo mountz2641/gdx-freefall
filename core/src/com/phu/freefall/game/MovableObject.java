@@ -27,7 +27,7 @@ public class MovableObject extends GameObject {
     }
 
     public void applyGravity() {
-        setAccelerationY(-10);
+        setAccelerationY(-1);
         velocity.y += acceleration.y;
     }
 }

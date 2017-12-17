@@ -16,13 +16,16 @@ public class GameScreen extends ScreenAdapter {
     WorldRenderer worldRenderer;
     SpriteBatch batch;
     OrthographicCamera orthoCam;
+    Ball ball;
 
 
     public GameScreen (FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
         this.world = new World(freeFall);
         this.worldRenderer = new WorldRenderer(freeFall,world);
+        this.world.setWorldRenderer(worldRenderer);
         this.batch = freeFall.batch;
+        this.ball = world.getBall();
 
         worldCam = world.getWorldCam();
         orthoCam = new OrthographicCamera(worldCam.getViewportWidth(),worldCam.getViewportHeight());
@@ -37,7 +40,6 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void playerControl() {
-        Ball ball = world.getBall();
         if(Gdx.input.isKeyPressed(Keys.LEFT)) {
             ball.setVelocityX(-ball.getSpeed());
         }
@@ -47,9 +49,11 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void update(float delta) {
-        playerControl();
-        world.update(delta);
-        updateCamera(delta);
+        if(ball.isAlive()) {
+            playerControl();
+            world.update(delta);
+            updateCamera(delta);
+        }
     }
 
     @Override
