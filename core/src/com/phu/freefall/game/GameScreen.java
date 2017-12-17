@@ -1,6 +1,7 @@
 package com.phu.freefall.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
@@ -48,12 +49,26 @@ public class GameScreen extends ScreenAdapter {
         }
     }
 
+    private void commandControl(boolean isBallAlive) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            freeFall.changeScreenMode(FreeFall.screenMode.Game);
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            orthoCam = new OrthographicCamera(worldCam.getViewportWidth(),worldCam.getViewportHeight());
+            orthoCam.position.set(FreeFall.WIDTH / 2.0f, FreeFall.HEIGHT / 2.0f,0);
+            orthoCam.update();
+            batch.setProjectionMatrix(orthoCam.combined);
+            freeFall.changeScreenMode(FreeFall.screenMode.Welcome);
+        }
+    }
+
     private void update(float delta) {
         if(ball.isAlive()) {
             playerControl();
             world.update(delta);
             updateCamera(delta);
         }
+        commandControl(ball.isAlive());
     }
 
     @Override

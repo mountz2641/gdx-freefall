@@ -9,17 +9,35 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class FreeFall extends Game {
 	SpriteBatch batch;
+	GameScreen gameScreen;
+	WelcomeScreen welcomeScreen;
 
 	public static final int HEIGHT = 1000;
 	public static final int WIDTH = 576;
-
+    enum screenMode {
+        Welcome, Game
+    }
 
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-        setScreen(new GameScreen(this));
+		welcomeScreen = new WelcomeScreen(this);
+        setScreen(welcomeScreen);
 	}
+
+	public void changeScreenMode(screenMode targetScreen) {
+        switch (targetScreen) {
+            case Game:
+                gameScreen = new GameScreen(this);
+                setScreen(gameScreen);
+                break;
+            case Welcome:
+                welcomeScreen = new WelcomeScreen(this);
+                setScreen(welcomeScreen);
+                break;
+        }
+    }
 
 	@Override
 	public void render () {
