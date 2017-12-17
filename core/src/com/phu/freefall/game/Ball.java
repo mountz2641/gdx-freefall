@@ -29,11 +29,9 @@ public class Ball extends MovableObject {
 
     private void checkSelfPosition() {
         if(position.y < worldCam.getPosition().y - worldCam.getViewportHeight()/2 + 32) {
-            //position.y = worldCam.getPosition().y + worldCam.getViewportHeight()/2;
             dead(Direction.DOWN);
         }
         if(position.y > worldCam.getPosition().y  + worldCam.getViewportHeight()/2 - 32) {
-            //position.y = worldCam.getPosition().y + worldCam.getViewportHeight()/2;
             dead(Direction.UP);
         }
         if(position.x < 0) {
@@ -69,7 +67,6 @@ public class Ball extends MovableObject {
     public void update (float delta) {
         timecount += delta;
         if(timecount >= 0.001) {
-            //System.out.println("FASTer:" + velocity.y);
             for(;timecount >= 0.001;timecount-=0.001) {
                 applyGravity();
             }

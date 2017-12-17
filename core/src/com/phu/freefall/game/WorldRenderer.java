@@ -18,14 +18,11 @@ public class WorldRenderer {
     private Texture spearRowRevertImage;
     private Camera worldCam;
 
-    //private Texture backgroundImage;
-
     public WorldRenderer(FreeFall pFreeFall, World pWorld) {
         this.freeFall = pFreeFall;
         this.world = pWorld;
         this.ballImage = new Texture("ball.png");
         this.batch = freeFall.batch;
-        //this.backgroundImage = new Texture("stoneWall.jpg");
         this.floorImage = new Texture("floor.png");
         this.mapRenderer = new MapRenderer(batch, world.getMap());
         this.worldCam = world.getWorldCam();
@@ -41,7 +38,6 @@ public class WorldRenderer {
         Vector2 ballPos = world.getBall().getPosition();
         mapRenderer.render(delta);
         batch.begin();
-        //batch.draw(backgroundImage,0,0);
         batch.draw(spearRowImage,worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1),
                 worldCam.getPosition().y - (worldCam.getViewportHeight() >> 1));
         batch.draw(spearRowRevertImage,worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1),
@@ -52,7 +48,6 @@ public class WorldRenderer {
                 worldCam.getPosition().x - (worldCam.getViewportWidth() >> 1) + 32,
                 worldCam.getPosition().y + (worldCam.getViewportHeight() >> 1) - 64);
         batch.end();
-        //System.out.println("Delta: " + delta);
     }
 
 }

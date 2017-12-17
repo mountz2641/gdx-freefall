@@ -93,8 +93,6 @@ public class Map {
                         }
                     }
 
-                } else {
-                    //generate blankrow
                 }
                 lastRowPositionY -= refFloor.getHeight();
             }

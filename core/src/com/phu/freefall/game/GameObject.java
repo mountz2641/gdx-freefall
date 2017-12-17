@@ -14,6 +14,7 @@ public class GameObject {
     public void setPosition(Vector2 pPosition) {
         this.position = pPosition;
     }
+
     public void setPositionX(float x) {
         this.position.x = x;
     }

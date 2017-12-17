@@ -26,7 +26,6 @@ public class World {
 
     public World(FreeFall pFreeFall) {
         this.freeFall = pFreeFall;
-        //gamefont = new BitmapFont(files.internal("gamefont.fnt"), files.internal("gamefont.png"),);
         gamefont = new BitmapFont(Gdx.files.internal("gamefont.fnt"), files.internal("gamefont.png"), false);
         gamefont.setColor(new Color(79/255f,159/255f,100/255f,1));
         initiateWorld();
@@ -77,6 +76,4 @@ public class World {
         worldCam.update(delta);
         scoreUpdater(delta);
     }
-
-
 }
