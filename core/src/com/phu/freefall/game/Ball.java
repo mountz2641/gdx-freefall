@@ -10,6 +10,7 @@ public class Ball extends MovableObject {
     private World world;
     private int speed;
     private float timecount;
+    private Camera worldCam;
 
     public Ball(int x, int y,World pWorld) {
         position = new Vector2(x, y);
@@ -17,23 +18,31 @@ public class Ball extends MovableObject {
         acceleration = new Vector2(0,0);
         width = 64;
         height = 64;
-        speed = 420;
+        speed = 490;
         this.world = pWorld;
+        this.worldCam = world.getWorldCam();
     }
 
     public int getSpeed() { return speed; }
 
     public void update (float delta) {
         timecount += delta;
-        if(timecount > 0.01) {
-            applyGravity();
+        if(timecount >= 0.01) {
             //System.out.println("FASTer:" + velocity.y);
-            timecount -= 0.01;
+            for(;timecount >= 0.01;timecount-=0.01) {
+                applyGravity();
+            }
         }
         timecount = 0;
         move(delta);
-        if(position.y < 0) {
-            position.y = world.getFreeFall().HEIGHT;
+        if(position.y < worldCam.getPosition().y - worldCam.getViewportHeight()/2) {
+            position.y = worldCam.getPosition().y + worldCam.getViewportHeight()/2;
+        }
+        if(position.x < 0) {
+            position.x = worldCam.getViewportWidth();
+        }
+        if(position.x > worldCam.getViewportWidth()) {
+            position.x = 0;
         }
     }
 

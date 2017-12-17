@@ -7,7 +7,7 @@ import static java.lang.Math.abs;
 public class Floor extends GameObject{
     private World world;
 
-    public Floor (int x, int y,World pWorld) {
+    public Floor (float x, float y,World pWorld) {
         this.position = new Vector2(x, y);
         this.world = pWorld;
         width = 72;
@@ -22,7 +22,9 @@ public class Floor extends GameObject{
             //Ball and Floor not Collide
             return Direction.NONE;
         }
-        else if(ball.getPosition().y - this.position.y > abs(ball.getPosition().x - this.position.x)) {
+        else if(isXInRange(ball.getPosition().y - ball.getHeight()/2,
+                            this.position.y + this.height/3,
+                            this.position.y + this.height/2)) {
             //Ball is on top of Floor
             return Direction.UP;
         }
@@ -37,5 +39,9 @@ public class Floor extends GameObject{
         else {
             return Direction.NONE;
         }
+    }
+
+    public boolean isXInRange(float x, float y, float z) {
+        return x >= y && x <= z;
     }
 }

@@ -13,18 +13,6 @@ public class World {
     private Ball ball;
     private FreeFall freeFall;
     private Map map;
-    private ArrayList<Floor> platform = new ArrayList<Floor>();
-    private String[] pattern = new String[] {
-            "--<#####",
-            "#>--<###",
-            "###>--<#",
-            "#####>--",
-            "--<##>--",
-            "##>--<##",
-            "--^--^--",
-            "#>----<#",
-            ">--<>--<",
-            "--------"};
 
     private Camera worldCam;
     private static final int CAM_VIEWPORT_WIDTH = FreeFall.WIDTH;
@@ -37,11 +25,11 @@ public class World {
     }
 
     public void initiateWorld() {
+        this.worldCam = new Camera(FreeFall.WIDTH, FreeFall.HEIGHT);
+        worldCam.setSpeed(-300);
+        worldCam.setPosition(new Vector2(FreeFall.WIDTH / 2.0f, FreeFall.HEIGHT / 2.0f));
         this.ball = new Ball(300,300, this);
         this.map = new Map(this);
-        this.worldCam = new Camera(FreeFall.WIDTH, FreeFall.HEIGHT);
-        worldCam.setSpeed(120);
-        worldCam.setPosition(new Vector2(FreeFall.WIDTH / 2.0f, FreeFall.HEIGHT / 2.0f));
     }
 
     public Ball getBall() { return ball; }
